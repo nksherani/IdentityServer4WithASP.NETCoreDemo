@@ -1,0 +1,46 @@
+﻿@model IdentityServer.Data.Entities.ApplicationUser
+@{
+    ViewData["Title"] = "GetUser";
+}
+
+<h1>GetUser</h1>
+
+<table>
+    <tr>
+        <th>
+            Username
+        </th>
+        <td>
+            @Model.UserName
+        </td>
+    </tr>
+    <tr>
+        <th>
+            First Name
+        </th>
+        <td>
+            @Model.FirstName
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Last Name
+        </th>
+        <td>
+            @Model.LastName
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Email
+        </th>
+        <td>
+            @Model.Email
+        </td>
+    </tr>
+</table>
+
+<div>
+    <a asp-action="GetUsers">Back to List</a>
+</div>
+

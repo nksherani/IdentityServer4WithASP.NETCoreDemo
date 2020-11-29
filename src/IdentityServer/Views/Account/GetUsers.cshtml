@@ -1,0 +1,78 @@
+﻿@model List<IdentityServer.Data.Entities.ApplicationUser>
+@{
+    ViewData["Title"] = "GetUsers";
+}
+
+<h1>Users</h1>
+<div>
+    <div class="searchbaritems"><input type="text" id="search"></div> 
+    <div class="searchbaritems"><button type="button" id="clicksearch">Search</button></div>
+    <div class="searchbaritems">Click <a href="../Account/AddUser">here</a> to add a user.</div>
+     
+</div>
+<div class="removefloat"></div>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Details</th>
+        <th>Remove</th>
+    </tr>
+    @{
+        foreach (var user in Model)
+        {
+            <tr>
+
+                <td>
+                    @user.UserName
+                </td>
+                <td>
+                    @user.Email
+                </td>
+                <td>
+                    @Html.ActionLink(
+                        linkText: "Details",
+                        actionName: "GetUser",
+                        controllerName: "Account",
+                        routeValues: new
+                             {
+                            Id = user.Id
+                        },
+                        htmlAttributes: null
+                    )
+
+                </td>
+                <td>
+                    @if (user.IsEnabled)
+                    {
+                        @Html.ActionLink(
+                            linkText: "Disable",
+                            actionName: "DisableUser",
+                            controllerName: "Account",
+                            routeValues: new
+                                 {
+                                Id = user.Id
+                            },
+                            htmlAttributes: null
+                        )
+                    }
+                    else
+                    {
+                        @Html.ActionLink(
+                           linkText: "Enable",
+                           actionName: "EnableUser",
+                           controllerName: "Account",
+                           routeValues: new
+                                {
+                               Id = user.Id
+                           },
+                           htmlAttributes: null
+                       )
+                    }
+
+
+                </td>
+            </tr>
+        }
+    }
+</table>
